@@ -20,3 +20,10 @@ After that:
  * ```npm run start:docker``` - Run the docker container
  * [http://localhost:3000](http://localhost:3000) - Access the application
 
+## Useful commands
+
+Creating local cluster with kind:
+```kind create cluster --config=k8s/kind.yaml --name=sd-cluster```
+
+Creating a new pod based on the yaml file
+```kubectl apply -f k8s/pod.yaml```
