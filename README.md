@@ -25,5 +25,8 @@ After that:
 Creating local cluster with kind:
 ```kind create cluster --config=k8s/kind.yaml --name=sd-cluster```
 
+Removing the cluster from the memory
+```kind delete clusters sd-cluster```
+
 Creating a new pod based on the yaml file
 ```kubectl apply -f k8s/pod.yaml```
