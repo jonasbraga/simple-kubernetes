@@ -30,3 +30,11 @@ Removing the cluster from the memory
 
 Creating a new pod based on the yaml file
 ```kubectl apply -f k8s/pod.yaml```
+
+Deploy new version of image
+
+```docker build -t jonasbraga/kubernets-node-server:<tagVersion> .```
+
+```docker login```
+
+```docker push jonasbraga/kubernets-node-server:<tagVersion>```

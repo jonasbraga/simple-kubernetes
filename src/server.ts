@@ -10,6 +10,10 @@ app.get('/', (req: Request, res: Response) => {
   res.send('<H1>Hello world! </H1> from: Express + TypeScript Server');
 });
 
+app.get('/v2', (req: Request, res: Response) => {
+  res.send('<H1>Hello world v2! </H1> from: Express + TypeScript Server');
+});
+
 app.listen(port, () => {
   console.info(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
