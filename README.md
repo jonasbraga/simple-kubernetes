@@ -38,3 +38,9 @@ Deploy new version of image
 ```docker login```
 
 ```docker push jonasbraga/kubernets-node-server:<tagVersion>```
+
+Check deployment versions
+```kubectl rollout history deployment node-server```
+
+Undo the last deployment (use --to-revision=<revision_number> flag to choose disered version)
+```kubectl rollout undo deployment node-server```
