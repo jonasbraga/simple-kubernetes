@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "node-server"
+  name: "node-server-deployment"
   labels:
     app: "node-server"
 spec:
@@ -16,4 +16,21 @@ spec:
     spec:
       containers:
         - name: "node-server"
-          image: jonasbraga/kubernets-node-server:1.0
+          image: jonasbraga/kubernets-node-server:2.0
+
+          resources:
+            requests:
+              cpu: "0.05"
+              memory: 20Mi
+            limits:
+              cpu: "0.05"
+              memory: 25Mi
+
+          volumeMounts:
+            - mountPath: "/app/pvc"
+              name: node-server-volume
+
+      volumes:
+        - name: node-server-volume
+          persistentVolumeClaim:
+            claimName: node-server-pvc

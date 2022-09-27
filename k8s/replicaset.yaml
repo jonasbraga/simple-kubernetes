@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: "node-server"
+  name: "node-server-replicaset"
   labels:
     app: "node-server"
 spec:
