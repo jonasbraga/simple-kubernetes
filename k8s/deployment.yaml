@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: "node-server"
-          image: jonasbraga/kubernets-node-server:2.0
+          image: jonasbraga/kubernets-node-server:3.0
 
           resources:
             requests:

@@ -1,5 +1,7 @@
 # Simple Kubernetes
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/19900109-ebd8d7d4-8150-475b-9421-40896960c890?action=collection%2Ffork&collection-url=entityId%3D19900109-ebd8d7d4-8150-475b-9421-40896960c890%26entityType%3Dcollection%26workspaceId%3Da550e6c8-4ebb-4122-8ead-8a3085ff5112)
+
 This is just a simple application to apply some learnings from kubernetes course.
 
 ## Techs
@@ -45,51 +47,10 @@ Check deployment versions
 Undo the last deployment (use --to-revision=<revision_number> flag to choose disered version)
 ```kubectl rollout undo deployment node-server```
 
-
 Foward traffic to specific port
 ```kubectl port-forward <TYPE/NAME> 9000:80```
 
 ## Overview application
-
-Script:
-
-Deploy application without kubernets
-Building the image based on the Dockerfile
-```docker build -t node-server-image .```
-Running the image (creating the container)
-```docker run -p 3000:3000 -d --name node-server-container node-server-image```
-Accessing the application
-[http://localhost:3000](http://localhost:3000)
-
-Talk about kubernets structure
-Explain kind
-```kind create cluster --config=k8s/kind.yaml --name=sd-cluster```
-
-Explain pod
-```kubectl apply -f k8s/pod.yaml```
-```kubectl get pods```
-```kubectl describe pod <pod_id>```
-```kubectl delete pod <pod_id>```
-```kubectl get pods``` // There's nothing left
-
-Talk about ReplicaSet (replicas and so on)
-Implement Deployment
-```kubectl apply -f k8s/deployment.yaml```
-```kubectl get deployments```
-```kubectl get replicasets```
-```kubectl get pods```
-Show replicaset creating new pod automatically
-```kubectl delete pod <pod_id>```
-```kubectl get pods```
-Change image in deployment and show the deployment recreating the pods with the new version
-```kubectl apply -f k8s/deployment.yaml```
-```kubectl get pods```
-```kubectl describe pod <pod_id>```
-```kubectl delete pod <pod_id>```
-
-
-========================================================
-
 
 Creating local cluster with kind:
 ```kind create cluster --config=k8s/kind.yaml --name=sd-cluster```
@@ -105,7 +66,3 @@ Applying service
 
 Fowarding the traffic to our service, then it will balance the request through all our nodes and pods
 ```kubectl port-forward service/node-server-service 9000:80```
-
-
-
-
