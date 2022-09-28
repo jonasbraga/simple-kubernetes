@@ -60,23 +60,23 @@ app.get("/echo", (req: Request, res: Response) => {
 })
 
 // create a route that creates a file with the string from query params
-app.get("/create", (req: Request, res: Response) => {
+app.get("/writeFile", async (req: Request, res: Response) => {
   const { str } = req.query
   const fs = require("fs")
+  const fileName = "pvc/message.txt"
+  let fileContent
+  try {
+    // try to read file
+    fileContent = await fs.promises.readFile(fileName)
+  } catch (error) {
+    // create empty file, because it wasn't found
+    await fs.promises.writeFile(fileName, '')
+    fileContent = ''
+  }
+  const result = fileContent + str
+  await fs.promises.writeFile(fileName, str, {flag: 'a+'})
 
-  fs.readFile("pvc/message.txt", "utf8", function (err: any, data: any) {
-  if (err) {
-      return console.log(err)
-    }
-
-    var result = data.concat(str)
-
-    fs.writeFile("pvc/message.txt", result, "utf8", function (err: any) {
-      res.send(`<H1>File created with content: ${result} </H1>`)
-
-      if (err) return console.log(err)
-    })
-  })
+  res.send(`<H1>File updated with content: ${result} </H1>`)
 })
 
 app.listen(port, () => {
